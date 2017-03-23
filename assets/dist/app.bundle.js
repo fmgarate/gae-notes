@@ -1,0 +1,2 @@
+webpackJsonp([0],{1:function(n,o,p){function t(n){console.log("notes app ready")}p(0).module("app.notes",[]).run(["$http",t])},6:function(n,o,p){n.exports=p(1)}},[6]);
+//# sourceMappingURL=app.bundle.js.map

@@ -1,0 +1,20 @@
+application: gae-notes
+version: 1
+
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /assets
+  static_dir: assets
+
+- url: /tpl
+  static_dir: views
+
+- url: /api.*
+  script: application.main.app
+
+- url: /.*
+  static_files: views/index.html
+  upload: views/index.html

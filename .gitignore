@@ -1,0 +1,6 @@
+*.pyc
+*.bak
+env
+libs/*
+!libs/README.md
+node_modules

@@ -1,0 +1,13 @@
+{
+  "name": "gae-notes",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "angular": "^1.6.3",
+    "angular-resource": "^1.6.3",
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "webpack": "^2.3.1"
+  }
+}
