@@ -5,3 +5,11 @@ nav {
 nav a {
     text-decoration: none;
 }
+
+form label {
+    display: block;
+}
+
+form .form-group {
+    margin-bottom: 15px;
+}
