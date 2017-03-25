@@ -5,10 +5,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Notes</title>
+        <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
         <script type="text/javascript" src="/assets/dist/lib.bundle.js"></script>
         <script type="text/javascript" src="/assets/dist/app.bundle.js"></script>
+        <base href="/"></base>
     </head>
     <body>
-        <h1>Notes</h1>
+        <nav>
+            <a ui-sref="list">LIST</a>
+            <a ui-sref="new">NEW</a>
+        </nav>
+        <div ui-view></div>
     </body>
 </html>

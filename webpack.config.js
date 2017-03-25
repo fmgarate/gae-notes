@@ -8,10 +8,12 @@ const config = {
     entry: {
         app: [
             "./assets/app/app.js",
+            "./assets/app/ctrl/note.js",
         ],
 
         lib: [
             "angular",
+            "angular-ui-router",
             "lodash",
         ]
     },
