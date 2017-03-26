@@ -22,8 +22,7 @@ def note_create():
 
 @app.get("/api/notes/<note_id:int>/")
 def note_details(note_id):
-    note = shortcuts.get_object_or_404(models.Note, note_id)
-    return note.to_data()
+    return shortcuts.get_object_or_404(models.Note, note_id).to_data()
 
 
 @app.put("/api/notes/<note_id:int>/")

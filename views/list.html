@@ -1,7 +1,8 @@
 <h2>All Notes</h2>
 
 <div class="note-item" ng-repeat="note in vm.items">
-    <h4 class="title"><a ui-sref="details({id: note.id})">
+    <h4 class="title">
+        <a ui-sref="note({id: note.id})">
             {{ note.title }}</a></h4>
     <div class="actions">
         <button>EDIT</button>
