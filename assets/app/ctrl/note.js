@@ -8,11 +8,11 @@ angular
     ])
     .controller("NoteFormCtrl", [
         "Note",
+        "note",
         NoteFormCtrl
     ])
     .controller("NoteDetailsCtrl", [
-        "Note",
-        "$state",
+        "note",
         NoteDetailsCtrl
     ]);
 
@@ -28,17 +28,17 @@ function NoteIndexCtrl(Note) {
     });
 }
 
-function NoteFormCtrl(Note) {
-    console.log("NoteFormCtrl");
-}
-
-function NoteDetailsCtrl(Note, $state) {
+function NoteFormCtrl(Note, note) {
 
     var vm = this;
 
-    vm.note = {};
+    vm.note = note || new Note();
+}
 
-    Note.get({id: $state.params.id}, function(data) {
-        vm.note = data;
-    });
+
+function NoteDetailsCtrl(note) {
+
+    var vm = this;
+
+    vm.note = note;
 }

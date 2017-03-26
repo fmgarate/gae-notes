@@ -27,12 +27,22 @@ function config($locationProvider, $resourceProvider, $stateProvider) {
         .state("new", {
             url: "/new/",
             templateUrl: "tpl/new.html",
-            controller: "NoteFormCtrl as vm"
+            controller: "NoteFormCtrl as vm",
+            resolve: {
+                note: [function() {
+                    return null;
+                }]
+            }
         })
 
-        .state("details", {
-            url: "/details/:id/",
-            templateUrl: "tpl/details.html",
-            controller: "NoteDetailsCtrl as vm"
+        .state("note", {
+            url: "/note/{id}/",
+            templateUrl: "tpl/note.html",
+            controller: "NoteDetailsCtrl as vm",
+            resolve: {
+                note: ["$stateParams", "Note", function($stateParams, Note) {
+                    return Note.get({id: $stateParams.id}).$promise;
+                }]
+            }
         });
 }
