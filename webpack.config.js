@@ -9,11 +9,13 @@ const config = {
         app: [
             "./assets/app/app.js",
             "./assets/app/ctrl/note.js",
+            "./assets/app/services/note.js",
         ],
 
         lib: [
             "angular",
             "angular-ui-router",
+            "angular-resource",
             "lodash",
         ]
     },

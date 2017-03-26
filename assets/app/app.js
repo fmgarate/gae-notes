@@ -2,17 +2,20 @@ var angular = require("angular");
 
 angular
     .module("app.notes", [
+        "ngResource",
         "ui.router"
     ])
     .config([
         "$locationProvider",
+        "$resourceProvider",
         "$stateProvider",
         config
     ]);
 
-function config($locationProvider, $stateProvider) {
+function config($locationProvider, $resourceProvider, $stateProvider) {
 
     $locationProvider.html5Mode(true);
+    $resourceProvider.defaults.stripTrailingSlashes = false;
 
     $stateProvider
         .state("list", {
