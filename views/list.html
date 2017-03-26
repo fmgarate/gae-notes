@@ -1,1 +1,13 @@
-<h2>List</h2>
+<h2>All Notes</h2>
+
+<div class="note-item" ng-repeat="note in vm.items">
+    <h4 class="title"><a ui-sref="details({id: note.id})">
+            {{ note.title }}</a></h4>
+    <div class="actions">
+        <button>EDIT</button>
+        <button>DELETE</button>
+    </div>
+    <div class="content">
+        {{ note.content }}
+    </div>
+</div>

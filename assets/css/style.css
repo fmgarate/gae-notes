@@ -13,3 +13,15 @@ form label {
 form .form-group {
     margin-bottom: 15px;
 }
+
+.note-item {}
+.note-item .title {margin-bottom: 10px;}
+.note-item .actions {margin-bottom: 10px;}
+.note-item .actions button {
+    font-size: 9px;
+    padding: 3px 6px;
+    text-transform: uppercase;
+    background-color: #EEE;
+    border: none;
+}
+.note-item .content {}
