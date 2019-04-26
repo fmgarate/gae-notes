@@ -10,6 +10,6 @@ class Note(ndb.Model):
     updated = ndb.DateTimeProperty(auto_now=True)
 
     def to_data(self):
-        return dict(self.to_dict(include=("title", "content")),
-            id=self.key.id()
-        )
+        return dict(self.to_dict(include=("title", "content", "tags")), **{
+            'id': self.key.id()
+        })
