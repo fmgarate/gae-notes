@@ -27,5 +27,5 @@ form .form-group {
 
 .note-details .content,
 .note-item .content {
-    white-space: pre-line;
+    white-space: pre;
 }
