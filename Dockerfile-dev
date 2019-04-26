@@ -1,0 +1,20 @@
+FROM google/cloud-sdk:alpine
+
+ADD . /app
+WORKDIR /app
+
+RUN apk add --update py-pip
+RUN pip install -r requirements.txt -t libs
+RUN gcloud components install app-engine-python
+
+EXPOSE 8000
+EXPOSE 8080
+
+CMD dev_appserver.py \
+    --host 0.0.0.0 \
+    --admin_host 0.0.0.0 \
+    --enable_console \
+    --enable_host_checking false \
+    --allow_skipped_files \
+    --storage_path .gaedata \
+    .
