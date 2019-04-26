@@ -24,4 +24,8 @@ form .form-group {
     background-color: #EEE;
     border: none;
 }
-.note-item .content {}
+
+.note-details .content,
+.note-item .content {
+    white-space: pre-line;
+}

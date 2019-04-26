@@ -9,6 +9,6 @@
         <button>DELETE</button>
     </div>
     <div class="content">
-        {{ note.content }}
+        {{ note.content | limitTo : 96 }}
     </div>
 </div>

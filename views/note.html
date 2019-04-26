@@ -1,5 +1,12 @@
-<h2>{{ vm.note.title }}</h2>
+<div class="note-details">
+    <h2>{{ vm.note.title }}</h2>
+    <p>
+        <code ng-repeat="tag in vm.note.tags">
+            {{ tag }}
+        </code>
+    </p>
 
-<div class="content">
-    {{ vm.note.content }}
+    <div class="content">
+        {{ vm.note.content }}
+    </div>
 </div>
