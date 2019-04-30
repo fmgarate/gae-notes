@@ -3,10 +3,9 @@ FROM google/cloud-sdk:alpine
 ADD . /app
 WORKDIR /app
 
-RUN apk add --update py-pip && \
-    pip install -r requirements.txt -t libs && \
-    gcloud components install app-engine-python \
-        app-engine-python-extras
+RUN apk add --update py-pip \
+ && pip install -r requirements.txt -t libs \
+ && gcloud components install app-engine-python app-engine-python-extras
 
 EXPOSE 8000
 EXPOSE 8080
