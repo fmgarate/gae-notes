@@ -1,14 +1,13 @@
-import bottle
-from bottle import request
+from flask import Flask, request, jsonify
 
 import forms
 import models
 import shortcuts
 
-app = bottle.Bottle()
+app = Flask(__name__)
 
 
-@app.get("/api/notes/")
+@app.route("/api/notes/", methods=('GET',))
 def note_list():
     """
     Notes list api endpoint. Returns a list of notes
@@ -16,56 +15,57 @@ def note_list():
 
     qs = models.Note.query().order(-models.Note.created)
 
-    return {
-        "items": qs.map(lambda n: n.to_data())
-    }
+    return jsonify(items=qs.map(lambda n: n.to_data()))
 
 
-@app.post("/api/notes/")
+@app.route("/api/notes/", methods=('POST',))
 def note_create():
     """
     Note create api endpoint. Create a new note
     """
 
-    form = forms.NoteForm(request.POST)
+    form = forms.NoteForm(request.form)
 
     if form.validate():
         note = models.Note()
         form.populate_obj(note)
         note.put()
 
-        return note.to_data()
+        return jsonify(note.to_data())
 
-    return {"errors": form.errors}
+    return jsonify(errors=form.errors)
 
 
-@app.get("/api/notes/<note_id:int>/")
+@app.route("/api/notes/<int:note_id>/", methods=('GET',))
 def note_details(note_id):
     """
     Note details api endpoint. Returns a note instance
     """
-    return shortcuts.get_object_or_404(models.Note, note_id).to_data()
+
+    note = shortcuts.get_object_or_404(models.Note, note_id)
+
+    return jsonify(note.to_data())
 
 
-@app.put("/api/notes/<note_id:int>/")
+@app.route("/api/notes/<int:note_id>/", methods=('PUT',))
 def note_update(note_id):
     """
     Note update api endpoint. Update a note
     """
 
     note = shortcuts.get_object_or_404(models.Note, note_id)
-    form = forms.NoteForm(request.POST, note)
+    form = forms.NoteForm(request.form, note)
 
     if form.validate():
         form.populate_obj(note)
         note.put()
 
-        return note.to_data()
+        return jsonify(note.to_data())
 
-    return {"errors": form.errors}
+    return jsonify(errors=form.errors)
 
 
-@app.delete("/api/notes/<note_id:int>/")
+@app.route("/api/notes/<int:note_id>/", methods=('DELETE',))
 def note_delete(note_id):
     """
     Note delete api endpoint. Delete a note
@@ -74,4 +74,4 @@ def note_delete(note_id):
     note = shortcuts.get_object_or_404(models.Note, note_id)
     note.key.delete()
 
-    return {}
+    return jsonify({})
