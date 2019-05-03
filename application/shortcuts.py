@@ -1,4 +1,4 @@
-from bottle import abort
+from flask import abort
 
 
 def get_object(model, instance_id, validation_callback=None, error_callback=None):
